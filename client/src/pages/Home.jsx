@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Cards from "../components/Cards";
 import Header from "../components/Header";
 import Pagination from "../components/Pagination";
