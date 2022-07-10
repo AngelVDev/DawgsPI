@@ -7,12 +7,16 @@ router.get("/dogs", async (req, res) => {
   const { name } = req.query;
   const info = await allInfo();
   try {
-    const breed = await info.filter((d) =>
-      d.name.toLowerCase().includes(name.toLowerCase())
-    );
-    breed.length
-      ? res.status(200).send(breed)
-      : res.status(404).send("Sorry, not a dawg");
+    if (name) {
+      const breed = await info.filter((d) =>
+        d.name.toLowerCase().includes(name.toLowerCase())
+      );
+      breed.length
+        ? res.status(200).send(breed)
+        : res.status(404).send("Sorry, not a dawg");
+    } else {
+      res.status(200).json(info);
+    }
   } catch (err) {
     res.status(500);
     console.log("routerdog err", err);
