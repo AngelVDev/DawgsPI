@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Cards from "../components/Cards";
+import Header from "../components/Header";
+import Pagination from "../components/Pagination";
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <Header />
+      <Cards />
+      <Pagination />
+    </div>
+  );
 };
 
 export default Home;
