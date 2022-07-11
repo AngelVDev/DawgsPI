@@ -19,7 +19,9 @@ const Cards = () => {
               <Link to={"/details/" + d.id}>{d.name}</Link>
             </h1>
             <p>{d?.temperament}</p>
-            <h2>✨: {d?.weight}</h2>
+            <h2>
+              ✨: {d.id !== 179 && d.id !== 232 ? d.weight : "Unknown weight"}
+            </h2>
             <img src={d?.image} preload="true" alt="cardimgerror" />
           </div>
         ))}
