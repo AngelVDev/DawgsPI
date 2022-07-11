@@ -22,7 +22,7 @@ const Details = ({ match }) => {
   useEffect(() => {
     dispatch(clear());
     dispatch(getDetails(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
   return (
     <div>
       <h2>{dog.name}</h2>
