@@ -1,4 +1,3 @@
-import "./App.css";
 import Creator from "./pages/Creator";
 import Details from "./pages/Details";
 import Home from "./pages/Home";
