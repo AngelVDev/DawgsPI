@@ -5,7 +5,17 @@ import Pagination from "../components/Pagination";
 
 const Home = () => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        flexDirection: "column",
+        alignContent: "center",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#fefae0",
+      }}
+    >
       <Header />
       <Cards />
       <Pagination />
