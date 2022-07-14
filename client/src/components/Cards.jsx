@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getDogs } from "../redux/actions";
@@ -6,6 +7,15 @@ import "../styles/components.css";
 
 const Cards = () => {
   const dogs = useSelector((state) => state.allDogs);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dogsPerPage, setDogsPerPage] = useState(8);
+  const indexOfLastDog = currentPage * dogsPerPage;
+  const indexOfFirstDog = indexOfLastDog - dogsPerPage;
+  const currentDogs = dogs?.slice(indexOfFirstDog, indexOfLastDog);
+  const pagination = (pageNum) => {
+    setCurrentPage(pageNum);
+  };
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDogs());
@@ -14,10 +24,15 @@ const Cards = () => {
   if (dogs) {
     return (
       <>
-        {dogs.map((d) => (
+        {currentDogs?.map((d) => (
           <div className="card" key={d.id}>
             <h1>
-              <Link to={"/details/" + d.id}>{d.name}</Link>
+              <Link
+                style={{ textDecoration: "none", color: "#DDA15E" }}
+                to={"/details/" + d.id}
+              >
+                {d.name}
+              </Link>
             </h1>
             <div className="infoCard">
               <p>{d?.temperament}</p>
