@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import {
   filterByTemps,
@@ -41,6 +42,9 @@ const Header = () => {
 
   return (
     <div>
+      <button>
+        <Link to="/create"> Create a doge</Link>
+      </button>
       <SearchBar />
       <button onClick={(e) => handleReset(e)}>RESET</button>
       <label>
