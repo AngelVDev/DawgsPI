@@ -40,19 +40,19 @@ function rootReducer(state = initialState, action) {
       const copy = [...state.dogs];
       const bySource =
         action.payload === "MIXED"
-          ? copy
+          ? state.dogs
           : action.payload === "DB"
-          ? state.dogs.filter((el) => el.createdInDB)
-          : state.dogs.filter((el) => !el.createdInDB);
+          ? copy.filter((el) => el.createdInDB)
+          : copy.filter((el) => !el.createdInDB);
       return {
         ...state,
         allDogs: bySource,
       };
     case "SORT_WEIGHT":
-      //   const falseDogs = [...state.dogs];
+      const falseDogs = [...state.dogs];
       const sortWait =
         action.payload === "Low"
-          ? state.dogs.sort((a, b) => {
+          ? falseDogs.sort((a, b) => {
               if (a.weight.split("-")[0] > b.weight.split("-")[0]) {
                 return 1;
               }
@@ -61,7 +61,8 @@ function rootReducer(state = initialState, action) {
               }
               return 0;
             })
-          : state.dogs.sort((a, b) => {
+          : action.payload === "High"
+          ? falseDogs.sort((a, b) => {
               if (a.weight.split("-")[0] > b.weight.split("-")[0]) {
                 return -1;
               }
@@ -69,7 +70,8 @@ function rootReducer(state = initialState, action) {
                 return 1;
               }
               return 0;
-            });
+            })
+          : falseDogs;
       return {
         ...state,
         allDogs: sortWait,
@@ -103,10 +105,11 @@ function rootReducer(state = initialState, action) {
         allDogs: sorted,
       };
     case "FILTER_TEMPS":
+      const structuredCopy = [...state.dogs];
       const filteredByTemp =
         action.payload === "ALL"
           ? state.dogs
-          : state.dogs.filter((element) =>
+          : structuredCopy.filter((element) =>
               element.temperaments.map((el) => el.name).includes(action.payload)
             );
       return {
