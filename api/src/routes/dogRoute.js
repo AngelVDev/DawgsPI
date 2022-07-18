@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const { Sequelize } = require("sequelize");
 const { allInfo } = require("../controllers/dogsController");
 const { Dog, Temperament } = require("../db");
 const router = Router();
@@ -29,7 +30,13 @@ router.get("/dogs/:id", async (req, res) => {
     const dogViaId = await dogs.find((d) => `${d.id}` === id);
     if (id.includes("-")) {
       const dbDawg = await Dog.findByPk(id, {
-        include: { model: Temperament },
+        include: [
+          {
+            model: Temperament,
+            as: "temperaments",
+            through: { attributes: [] },
+          },
+        ],
       });
       dbDawg
         ? res.status(200).json(dbDawg)
@@ -43,7 +50,7 @@ router.get("/dogs/:id", async (req, res) => {
   }
 });
 router.post("/dogs", async (req, res) => {
-  const { name, height, weight, lifespan, image, temperament } = req.body;
+  const { name, height, weight, lifespan, image, temperaments } = req.body;
   try {
     const dogNew = await Dog.create({
       name,
@@ -52,7 +59,7 @@ router.post("/dogs", async (req, res) => {
       lifespan,
       image,
     });
-    const tempDB = await Temperament.findAll({ where: { name: temperament } });
+    const tempDB = await Temperament.findAll({ where: { name: temperaments } });
     await dogNew.addTemperament(tempDB);
     res.status(201).json(dogNew);
   } catch (error) {
