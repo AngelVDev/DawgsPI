@@ -15,7 +15,7 @@ const Cards = () => {
   const pagination = (pageNum) => {
     setCurrentPage(pageNum);
   };
-
+  const regex = new RegExp("[a-z]");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getDogs());
@@ -35,10 +35,20 @@ const Cards = () => {
               </Link>
             </h1>
             <div className="infoCard">
-              <p>{d?.temperament}</p>
-              <h2>
-                ✨: {d.id !== 179 && d.id !== 232 ? d.weight : "Unknown weight"}
-              </h2>
+              <p>
+                {regex.test(d.id) === true
+                  ? d?.temperaments?.map((t) => (
+                      <span className="tempCard" key={t.name + "id"}>
+                        {t.name}
+                      </span>
+                    ))
+                  : d?.temperaments?.map((temp) => (
+                      <span className="tempCard" key={temp + "id"}>
+                        {temp}
+                      </span>
+                    ))}
+              </p>
+              <h2>✨: {d.id !== 179 && d.id !== 232 ? d.weight : "3 - 25"}</h2>
             </div>
             <img src={d?.image} preload="true" alt="cardimgerror" />
           </div>

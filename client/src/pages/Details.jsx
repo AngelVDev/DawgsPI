@@ -8,6 +8,7 @@ const Details = ({ match }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { id } = match.params;
+  const regex = new RegExp("[a-z]");
   const handleClick = () => {
     history.push("/home");
   };
@@ -33,12 +34,16 @@ const Details = ({ match }) => {
       <p>Lifespan: {dog.lifespan}</p>
       <p>
         Temperament/s:{" "}
-        {dog.id !== Number
+        {regex.test(dog.id) === true
           ? dog?.temperaments?.map((t) => (
-              <span key={t.name + "id"}>{t.name}</span>
+              <span className="temp" key={t.name + "id"}>
+                {t.name}
+              </span>
             ))
           : dog?.temperaments?.map((temp) => (
-              <span key={temp + "id"}>{temp}</span>
+              <span className="temp" key={temp + "id"}>
+                {temp}
+              </span>
             ))}
       </p>
       {dog.id?.length > 10 ? (
