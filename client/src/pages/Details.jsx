@@ -23,6 +23,7 @@ const Details = ({ match }) => {
     dispatch(clear());
     dispatch(getDetails(id));
   }, [dispatch, id]);
+  console.log(dog.id?.length);
   return (
     <div>
       <h2>{dog.name}</h2>
@@ -30,7 +31,16 @@ const Details = ({ match }) => {
       <p>Height: {dog.height}</p>
       <p>Weight: {dog.weight}</p>
       <p>Lifespan: {dog.lifespan}</p>
-      <p>Temperament/s: {dog.temperament}</p>
+      <p>
+        Temperament/s:{" "}
+        {dog.id !== Number
+          ? dog?.temperaments?.map((t) => (
+              <span key={t.name + "id"}>{t.name}</span>
+            ))
+          : dog?.temperaments?.map((temp) => (
+              <span key={temp + "id"}>{temp}</span>
+            ))}
+      </p>
       {dog.id?.length > 10 ? (
         <button onClick={(e) => handleDelete(e, id)}>Delete</button>
       ) : null}
