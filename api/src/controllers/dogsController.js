@@ -16,7 +16,7 @@ const API = async () => {
         height: dog?.height.metric,
         weight: dog?.weight.metric,
         lifespan: dog?.life_span,
-        temperaments: dog?.temperament,
+        temperaments: dog?.temperament?.split(/\s*,\s*/),
         image: dog?.image.url,
       };
     });
