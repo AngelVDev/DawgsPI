@@ -13,8 +13,8 @@ const API = async () => {
       return {
         id: dog.id,
         name: dog.name,
-        height: dog?.height.metric,
-        weight: dog?.weight.metric,
+        height: dog?.height?.metric,
+        weight: dog?.weight?.metric,
         lifespan: dog?.life_span,
         temperaments: dog?.temperament?.split(/\s*,\s*/),
         image: dog?.image.url,
