@@ -5,16 +5,8 @@ import { Link } from "react-router-dom";
 import { getDogs } from "../redux/actions";
 import "../styles/components.css";
 
-const Cards = () => {
+const Cards = ({ currentDogs }) => {
   const dogs = useSelector((state) => state.allDogs);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [dogsPerPage, setDogsPerPage] = useState(8);
-  const indexOfLastDog = currentPage * dogsPerPage;
-  const indexOfFirstDog = indexOfLastDog - dogsPerPage;
-  const currentDogs = dogs?.slice(indexOfFirstDog, indexOfLastDog);
-  const pagination = (pageNum) => {
-    setCurrentPage(pageNum);
-  };
   const regex = new RegExp("[a-z]");
   const dispatch = useDispatch();
   useEffect(() => {
