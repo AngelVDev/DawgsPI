@@ -42,36 +42,38 @@ function rootReducer(state = initialState, action) {
         action.payload === "MIXED"
           ? state.dogs
           : action.payload === "DB"
-          ? copy.filter((el) => el.createdInDB)
-          : copy.filter((el) => !el.createdInDB);
+          ? copy.filter((el) => el.createdInDb)
+          : copy.filter((el) => !el.createdInDb);
       return {
         ...state,
         allDogs: bySource,
       };
     case "SORT_WEIGHT":
       const falseDogs = [...state.dogs];
+
       const sortWait =
         action.payload === "Low"
           ? falseDogs.sort((a, b) => {
-              if (a.weight.split("-")[0] > b.weight.split("-")[0]) {
+              if (1 * a.weight.split(" - ")[0] > 1 * b.weight.split(" - ")[0]) {
                 return 1;
               }
-              if (b.weight.split("-")[0] > a.weight.split("-")[0]) {
+              if (1 * b.weight.split(" - ")[0] > 1 * a.weight.split(" - ")[0]) {
                 return -1;
               }
               return 0;
             })
           : action.payload === "High"
           ? falseDogs.sort((a, b) => {
-              if (a.weight.split("-")[0] > b.weight.split("-")[0]) {
+              if (1 * a.weight.split(" - ")[0] > 1 * b.weight.split(" - ")[0]) {
                 return -1;
               }
-              if (a.weight.split("-")[0] > b.weight.split("-")[0]) {
+              if (1 * a.weight.split(" - ")[0] > 1 * b.weight.split(" - ")[0]) {
                 return 1;
               }
               return 0;
             })
           : falseDogs;
+      console.log(falseDogs.map((d) => d.weight.split(" - ")[0]));
       return {
         ...state,
         allDogs: sortWait,
@@ -106,11 +108,12 @@ function rootReducer(state = initialState, action) {
       };
     case "FILTER_TEMPS":
       const structuredCopy = [...state.dogs];
+      console.log(structuredCopy);
       const filteredByTemp =
         action.payload === "ALL"
           ? state.dogs
-          : structuredCopy.filter((element) =>
-              element.temperaments.map((el) => el.name).includes(action.payload)
+          : structuredCopy.filter((doggos) =>
+              doggos?.temperaments?.map((t) => t).includes(action.payload)
             );
       return {
         ...state,
