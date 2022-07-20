@@ -3,31 +3,34 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createDog, getTemps } from "../redux/actions";
 
-function isImage(url) {
-  return /^https?:\/\/.+\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
-}
-
 function validateForms(input) {
+  const regex = new RegExp(/(https?:\/\/.*\.(?:png|jpg))/i);
   let error = {};
   if (input.name.length < 1) {
     error.name = "Name required";
   }
-  if (input.height <= 0) {
+  if (input.heightMin <= 0) {
     error.height = "Height above zero, please";
   }
-  if (input.weight <= 0) {
+  if (input.heightMax >= 100) {
+    error.height = "Height below Zeus, please";
+  }
+  if (input.weightMin <= 0) {
     error.weight = "Weight above zero, please";
   }
-  // if (input.lifespan <= 0) {
-  //   error.lifespan = "Lifespan above zero, please";
-  // }
-  // if (isImage(input.image) === false) {
-  //   error.image =
-  //     "Format your image to something more friendly, then come back";
-  // }
-  // if (input.temperaments.length <= 0) {
-  //   error.temperaments = "Select at least one temperament";
-  // }
+  if (input.weightMax >= 156) {
+    error.weight = "Weight below Zorba, please";
+  }
+  if (input.lifespan <= 0) {
+    error.lifespan = "Lifespan above zero, please";
+  }
+  if (regex.test(input.image) === false) {
+    error.image =
+      "Format your image to something more friendly, then come back";
+  }
+  if (!input.temperaments) {
+    error.temperaments = "Select at least one temperament";
+  }
   return error;
 }
 
@@ -38,8 +41,10 @@ const Creator = () => {
   let [error, setError] = useState({});
   let [input, setInput] = useState({
     name: "",
-    height: "",
-    weight: "",
+    heightMin: "",
+    heightMax: "",
+    weightMin: "",
+    weightMax: "",
     lifespan: "",
     image: "",
     temperaments: [],
@@ -77,8 +82,10 @@ const Creator = () => {
     alert("The dog is safe at home, check it yourself");
     setInput({
       name: "",
-      height: "",
-      weight: "",
+      heightMin: "",
+      heightMax: "",
+      weightMin: "",
+      weightMax: "",
       lifespan: "",
       image: "",
       temperaments: [],
@@ -98,7 +105,12 @@ const Creator = () => {
             HEIGHT
             <input
               onChange={(e) => handleChange(e)}
-              name="height"
+              name="heightMin"
+              type="number"
+            />
+            <input
+              onChange={(e) => handleChange(e)}
+              name="heightMax"
               type="number"
             />
             {error.height && <p className="error">{error.height} </p>}
@@ -107,19 +119,28 @@ const Creator = () => {
             WEIGHT
             <input
               onChange={(e) => handleChange(e)}
-              name="weight"
+              name="weightMin"
+              type="number"
+            />
+            <input
+              onChange={(e) => handleChange(e)}
+              name="weightMax"
               type="number"
             />
             {error.weight && <p className="error">{error.weight} </p>}
           </label>
           <label>
             LIFESPAN
-            <input onChange={(e) => handleChange(e)} type="text" />
+            <input
+              name="lifespan"
+              onChange={(e) => handleChange(e)}
+              type="number"
+            />
             {error.lifespan && <p className="error">{error.lifespan} </p>}
           </label>
           <label>
             IMAGE
-            <input onChange={(e) => handleChange(e)} type="text" />
+            <input name="image" onChange={(e) => handleChange(e)} type="url" />
             {error.image && <p className="error">{error.image} </p>}
           </label>
           <label>
@@ -129,7 +150,7 @@ const Creator = () => {
               onChange={(e) => handleSelect(e)}
               id="tempSelection"
             >
-              <option value="">-</option>
+              <option value={null}>-</option>
               {temps?.map((el) => (
                 <option key={el.id} value={el.name}>
                   {el.name}
@@ -152,10 +173,13 @@ const Creator = () => {
           <div key="selectedTemps">
             <label>Selected temperaments:</label>
             {input.temperaments.map((e) => (
-              <button onClick={() => handleDelete(e)}>{e} x</button>
+              <button key={e} onClick={() => handleDelete(e)}>
+                {e} x
+              </button>
             ))}
           </div>
         )}
+        <button onClick={handleClick}>Back</button>
       </div>
     );
   } else {
