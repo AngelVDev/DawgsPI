@@ -63,16 +63,22 @@ router.post("/dogs", async (req, res) => {
     weightMax,
   } = req.body;
   try {
-    const dogNew = await Dog.create({
-      name,
-      height: heightMin + " - " + heightMax,
-      weight: weightMin + " - " + weightMax,
-      lifespan: lifespan + " years",
-      image,
-    });
-    const tempDB = await Temperament.findAll({ where: { name: temperaments } });
-    await dogNew.addTemperament(tempDB);
-    res.status(201).json(dogNew);
+    if (!name || weight !== String || temperaments.length === 0) {
+      res.status(500).send("Fields are missing");
+    } else {
+      const dogNew = await Dog.create({
+        name,
+        height: heightMin + " - " + heightMax,
+        weight: weightMin + " - " + weightMax,
+        lifespan: lifespan + " years",
+        image,
+      });
+      const tempDB = await Temperament.findAll({
+        where: { name: temperaments },
+      });
+      await dogNew.addTemperament(tempDB);
+      res.status(201).json(dogNew);
+    }
   } catch (error) {
     res.status(500).send(error);
     console.log(error);
