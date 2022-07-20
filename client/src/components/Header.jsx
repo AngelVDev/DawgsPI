@@ -11,28 +11,33 @@ import {
   showCreated,
 } from "../redux/actions";
 
-const Header = () => {
+const Header = ({ setCurrentPage }) => {
   const temps = useSelector((state) => state.temperaments);
   const dispatch = useDispatch();
 
   const handleOrderName = (e) => {
     e.preventDefault();
+    setCurrentPage(1);
     dispatch(orderByName(e.target.value));
   };
   const handleOrderWeight = (e) => {
     e.preventDefault();
+    setCurrentPage(1);
     dispatch(orderByWeight(e.target.value));
   };
   const handleFilterTemps = (e) => {
     e.preventDefault();
+    setCurrentPage(1);
     dispatch(filterByTemps(e.target.value));
   };
   const handleFilterSrc = (e) => {
     e.preventDefault();
+    setCurrentPage(1);
     dispatch(showCreated(e.target.value));
   };
   const handleReset = (e) => {
     e.preventDefault();
+    setCurrentPage(1);
     dispatch(getDogs());
   };
   useEffect(() => {
