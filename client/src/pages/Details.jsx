@@ -24,13 +24,13 @@ const Details = ({ match }) => {
     dispatch(clear());
     dispatch(getDetails(id));
   }, [dispatch, id]);
-  console.log(dog.id?.length);
+  console.log(dog);
   return (
     <div>
       <h2>{dog.name}</h2>
       <img src={dog.image} alt="notanimage" />
-      <p>Height: {dog.height}</p>
-      <p>Weight: {dog.weight}</p>
+      <p>Height: {dog.height} cms.</p>
+      <p>Weight: {dog.weight} kgs.</p>
       <p>Lifespan: {dog.lifespan}</p>
       <p>
         Temperament/s:{" "}
