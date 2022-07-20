@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 function App() {
   return (
     <Router>
-      <div className="App" style={{ height: "100vh" }}>
+      <div className="App" style={{ height: "100%" }}>
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/home" component={Home} />

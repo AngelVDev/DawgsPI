@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Cards from "../components/Cards";
 import Header from "../components/Header";
+import Loader from "../components/Loader";
 import Pagination from "../components/Pagination";
 
 const Home = () => {
@@ -15,28 +16,31 @@ const Home = () => {
   const pagination = (pageNum) => {
     setCurrentPage(pageNum);
   };
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        flexDirection: "column",
-        alignContent: "center",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#fefae0",
-        height: "100%",
-      }}
-    >
-      <Header />
-      <Cards currentDogs={currentDogs} />
-      <Pagination
-        dogs={dogs}
-        dogsPerPage={dogsPerPage}
-        pagination={pagination}
-      />
-    </div>
-  );
+  if (dogs) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          placeContent: "center",
+          placeItems: "center",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          justifyContent: "space-evenly",
+          background: "#FEFAE0",
+        }}
+      >
+        <Header setCurrentPage={setCurrentPage} />
+        <Cards currentDogs={currentDogs} />
+        <Pagination
+          dogs={dogs}
+          dogsPerPage={dogsPerPage}
+          pagination={pagination}
+        />
+      </div>
+    );
+  } else {
+    return <Loader />;
+  }
 };
 
 export default Home;
