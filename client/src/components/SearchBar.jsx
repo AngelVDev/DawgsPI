@@ -18,11 +18,16 @@ const SearchBar = () => {
   return (
     <div>
       <input
+        className="searchInput"
         type="text"
         placeholder="Breed name..."
         onChange={(e) => handleInputChange(e)}
       />
-      <button type="submit" onClick={(e) => handleSubmit(e)}>
+      <button
+        className="searchButton"
+        type="submit"
+        onClick={(e) => handleSubmit(e)}
+      >
         CALL
       </button>
     </div>

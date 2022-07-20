@@ -25,6 +25,7 @@ const Home = () => {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#fefae0",
+        height: "100%",
       }}
     >
       <Header />

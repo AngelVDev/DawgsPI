@@ -2,20 +2,25 @@
     width: 200px;
     height: 300px;
     background: #f8f9fa;
-    position: relative;
-    box-shadow: 15px 15px 50px #adb5bd75;
     text-align: center;
     transition: all 0.s ease-in;
-    margin: 2%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .card img {
     max-width: 200px;
     height: fit-content;
+    object-fit: contain;
   }
   
   .card h1 {
     transition: all 0.3s ease-in;
-    margin-top: 40px;
+    margin-top: 20px;
   }
   
   .card:hover {
@@ -24,39 +29,118 @@
   }
   
   .card:hover h1 {
-    transform: scale(1.1);
+    transform: scale(1.06);
     color: #f8f9fa;
   }
   
-  .card::before {
-    content: '';
-    width: 10%;
-    height: 0;
-    background: #3f72ff;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-        /* Or Top */
-    transition: 0.3s ease-in-out;
-    z-index: -1;
-  }
-  
-  .card:hover::before {
-    height:10%;
-  }
 
   .pagesHolder{
-    width: 220px;
+    width: 50vw;
     height: 8vh;
     display: flex;
     background: #283618;
-    box-shadow: 0px 0px 10px 5px rgba(255, 102, 196, 0.08);
+    box-shadow: 0px 0px 10px 5px rgb(255 102 196 / 8%);
     border-radius: 40px;
     margin-bottom: 20px;
     margin-top: 15px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
   }
   .page{
+    background-color: #606C38;
     color: #FEFAE0;
     font-size: medium;
     font-weight: 600;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 50%;
+  }
+  .page:hover{
+    background-color: #535e32a6;
+    color: #baceb7;
+    cursor: pointer;
+  }
+  .temp{
+    background-color: #BC6C25;
+    color: #FEFAE0;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 5px;
+  }
+  .tempCard{
+    background-color: #606C38;
+    color: #FEFAE0;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 5px;
+  }
+  .filterContainer{
+    background: url("DDA15E.webp") center center/cover no-repeat content-box local ;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 130px;
+    width: 100%;
+  }
+  .create{
+    background-color: #BC6C25;
+    color: #FEFAE0;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 5px;
+  }
+  .create:hover{
+    background-color: #255abca8;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 5px;
+    border-color: none;
+    box-shadow: 0px 0px 10px 5px #4f94008e;
+  }
+  .reset{
+    background-color: #DDA15E;
+    color: #FEFAE0;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 5px;
+  }
+  .reset:hover{
+    background-color: #c58b49;
+    color: #f0e8b5;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 5px;
+    border-color: none;
+    box-shadow: 0px 0px 10px 5px #944f008e;
+  }
+  .headerLabel{
+    background-color: #8a40002f;
+    border-radius: 15px;
+    font-weight: 600;
+    margin-right: 4px;
+    color:#FEFAE0;
+    text-shadow: 0px 0px 5px #8a4000 ;
+  }
+  .headerSelect{
+    background-color: #606C38;
+    color: #FEFAE0 ;
+    border-radius: 5px;
+    margin-left: 5px;
+    border-color: #FEFAE0;
+  }
+  .searchInput{
+    border-radius: 5px;
+  }
+  .searchButton{
+    background-color: #606C38;
+    color: #FEFAE0 ;
+    border-radius: 5px;
+    margin-left: 5px;
+    border-color: #FEFAE0;
+    font-weight: 700;
   }

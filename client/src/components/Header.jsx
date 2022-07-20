@@ -41,31 +41,36 @@ const Header = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <button>
-        <Link to="/create"> Create a doge</Link>
+    <div className="filterContainer">
+      <button className="create">
+        <Link style={{ textDecoration: "none", color: "#FEFAE0" }} to="/create">
+          {" "}
+          Create a doge
+        </Link>
       </button>
       <SearchBar />
-      <button onClick={(e) => handleReset(e)}>RESET</button>
-      <label>
+      <button className="reset" onClick={(e) => handleReset(e)}>
+        RESET
+      </button>
+      <label className="headerLabel">
         Sort by name
-        <select onChange={(e) => handleOrderName(e)}>
+        <select className="headerSelect" onChange={(e) => handleOrderName(e)}>
           <option value="">-</option>
           <option value="ASC">A to Z</option>
           <option value="DSC">Z to A</option>
         </select>
       </label>
-      <label>
+      <label className="headerLabel">
         Sort by weight
-        <select onChange={(e) => handleOrderWeight(e)}>
+        <select className="headerSelect" onChange={(e) => handleOrderWeight(e)}>
           <option value="">-</option>
           <option value="Low">Low to hi</option>
           <option value="High">Hi to low</option>
         </select>
       </label>
-      <label>
+      <label className="headerLabel">
         Filter by temperament
-        <select onChange={(e) => handleFilterTemps(e)}>
+        <select className="headerSelect" onChange={(e) => handleFilterTemps(e)}>
           <option value="ALL">All</option>
           {temps &&
             temps?.map((temp) => {
@@ -73,9 +78,9 @@ const Header = () => {
             })}
         </select>
       </label>
-      <label>
+      <label className="headerLabel">
         Filter by source
-        <select onChange={(e) => handleFilterSrc(e)}>
+        <select className="headerSelect" onChange={(e) => handleFilterSrc(e)}>
           <option value="MIX">Mixed</option>
           <option value="API">API</option>
           <option value="DB">Createds</option>
