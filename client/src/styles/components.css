@@ -1,26 +1,33 @@
 .card {
-    width: 200px;
-    height: 300px;
+    width: 300px;
+    height: 400px;
     background: #f8f9fa;
     text-align: center;
     transition: all 0.s ease-in;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 9vh 0 9vh 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
+    box-sizing: border-box;
   }
   .card img {
-    max-width: 200px;
-    height: fit-content;
+    max-height: 150px;
+    max-width: 300px;
     object-fit: contain;
+    border-radius: 2%;
   }
   
   .card h1 {
     transition: all 0.3s ease-in;
     margin-top: 20px;
+  }
+  .infoCard{
+    box-sizing: border-box;
+    width: 100%;
+    overflow:  hidden;
+    margin: 0 3px 0 3px;
   }
   
   .card:hover {
@@ -35,28 +42,32 @@
   
 
   .pagesHolder{
-    width: 50vw;
-    height: 8vh;
+    height: 7vh;
     display: flex;
     background: #283618;
     box-shadow: 0px 0px 10px 5px rgb(255 102 196 / 8%);
     border-radius: 40px;
-    margin-bottom: 20px;
-    margin-top: 15px;
+    margin-bottom: 3vh;
+    margin-top: 5vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     z-index: 1;
   }
   .page{
+    display: flex;
+    justify-content: space-evenly;
     background-color: #606C38;
     color: #FEFAE0;
     font-size: medium;
+    width: 5px;
     font-weight: 600;
     margin-right: 5px;
     margin-left: 5px;
-    padding: 5px;
-    border-radius: 50%;
+    padding: 2px 8px 2px 8px;
+    border-radius: 4px;
   }
   .page:hover{
     background-color: #535e32a6;
@@ -69,13 +80,17 @@
     border-radius: 8px;
     padding: 5px;
     margin: 5px;
+    object-fit: contain;
   }
   .tempCard{
     background-color: #606C38;
     color: #FEFAE0;
     border-radius: 8px;
-    padding: 5px;
-    margin: 5px;
+    padding: 4px;
+    margin: 3px;
+    flex-wrap: wrap;
+    font-size: smaller;
+    word-break: keep-all;
   }
   .filterContainer{
     background: url("DDA15E.webp") center center/cover no-repeat content-box local ;
@@ -143,4 +158,20 @@
     margin-left: 5px;
     border-color: #FEFAE0;
     font-weight: 700;
+  }
+
+  .loader {
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    background:url("https://aws1.discourse-cdn.com/woot/original/4X/1/0/f/10fc342fa3f9e25171c9dd64870db7c78db46199.gif") center center/cover no-repeat;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .loader>h1{
+    color: whitesmoke;
+    text-shadow: 0px 0px 3px black ;
+    z-index: 1;
   }
