@@ -10,7 +10,7 @@ const Pagination = ({ dogs, dogsPerPage, pagination }) => {
   }
   return (
     <div className="pagesHolder">
-      <ul>
+      <ul style={{ margin: "0", display: "contents" }}>
         {pageNum &&
           pageNum.map((number) => (
             // eslint-disable-next-line jsx-a11y/anchor-is-valid
