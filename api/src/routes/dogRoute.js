@@ -50,13 +50,24 @@ router.get("/dogs/:id", async (req, res) => {
   }
 });
 router.post("/dogs", async (req, res) => {
-  const { name, height, weight, lifespan, image, temperaments } = req.body;
+  const {
+    name,
+    height,
+    weight,
+    lifespan,
+    image,
+    temperaments,
+    heightMin,
+    heightMax,
+    weightMin,
+    weightMax,
+  } = req.body;
   try {
     const dogNew = await Dog.create({
       name,
-      height,
-      weight,
-      lifespan,
+      height: heightMin + " - " + heightMax,
+      weight: weightMin + " - " + weightMax,
+      lifespan: lifespan + " years",
       image,
     });
     const tempDB = await Temperament.findAll({ where: { name: temperaments } });
