@@ -93,22 +93,29 @@ const Creator = () => {
   };
   if (temps) {
     return (
-      <div>
+      <div className="creatorContainer">
         <h1>Doggo creation</h1>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form className="formCon" onSubmit={(e) => handleSubmit(e)}>
           <label>
             NAME
-            <input onChange={(e) => handleChange(e)} name="name" type="text" />
+            <input
+              className="inputStyle"
+              onChange={(e) => handleChange(e)}
+              name="name"
+              type="text"
+            />
             {error.name && <p className="error">{error.name} </p>}
           </label>
           <label>
             HEIGHT
             <input
+              className="inputStyle"
               onChange={(e) => handleChange(e)}
               name="heightMin"
               type="number"
             />
             <input
+              className="inputStyle"
               onChange={(e) => handleChange(e)}
               name="heightMax"
               type="number"
@@ -118,11 +125,13 @@ const Creator = () => {
           <label>
             WEIGHT
             <input
+              className="inputStyle"
               onChange={(e) => handleChange(e)}
               name="weightMin"
               type="number"
             />
             <input
+              className="inputStyle"
               onChange={(e) => handleChange(e)}
               name="weightMax"
               type="number"
@@ -132,6 +141,7 @@ const Creator = () => {
           <label>
             LIFESPAN
             <input
+              className="inputStyle"
               name="lifespan"
               onChange={(e) => handleChange(e)}
               type="number"
@@ -140,12 +150,18 @@ const Creator = () => {
           </label>
           <label>
             IMAGE
-            <input name="image" onChange={(e) => handleChange(e)} type="url" />
+            <input
+              className="inputStyle"
+              name="image"
+              onChange={(e) => handleChange(e)}
+              type="url"
+            />
             {error.image && <p className="error">{error.image} </p>}
           </label>
           <label>
             TEMPERAMENT
             <select
+              className="inputStyle"
               name="temperaments"
               onChange={(e) => handleSelect(e)}
               id="tempSelection"
@@ -162,6 +178,7 @@ const Creator = () => {
             )}
           </label>
           <button
+            className="sendButton"
             onClick={handleClick}
             disabled={Object.keys(error).length}
             type="submit"
@@ -173,13 +190,19 @@ const Creator = () => {
           <div key="selectedTemps">
             <label>Selected temperaments:</label>
             {input.temperaments.map((e) => (
-              <button key={e} onClick={() => handleDelete(e)}>
+              <button
+                className="tempButton"
+                key={e}
+                onClick={() => handleDelete(e)}
+              >
                 {e} x
               </button>
             ))}
           </div>
         )}
-        <button onClick={handleClick}>Back</button>
+        <button className="backBtn" onClick={handleClick}>
+          Back
+        </button>
       </div>
     );
   } else {

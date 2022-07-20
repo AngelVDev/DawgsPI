@@ -73,3 +73,72 @@ border-radius: 15px;
     border-color: antiquewhite;
     font-weight: 600;
 }
+.error{
+    padding: 4px;
+    background-color: #ff9068bd;
+    color: white;
+}
+.creatorContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    background-color: #606C38;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 100%;
+    align-content: center;
+}
+.creatorContainer>h1{
+    color: #FEFAE0;
+    text-shadow: 0px 0px 5px #DDA15E;
+}
+.formCon{
+    height: 80%;
+    display: flex;
+    padding: 20px;
+    background-color: #dda25e8e;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+    flex-direction: column;
+    text-shadow: 0px 0px 5px #FEFAE0;
+    border-radius: 3px;
+    box-shadow: 0px 0px 15px 3px #FF9168;
+}
+.formCon>label{
+    font-weight: 200;   
+}
+.inputStyle{
+    color: #FEFAE0;
+    margin-left: 6px;
+    background-color: #606C38;
+    border-radius: 5px;
+}
+.tempButton{
+    border-radius: 8px;
+    background-color: #FF9168;
+    color: #ffffff;
+    font-weight: 600;
+    font-family: "Cabin";
+    padding: 4px;
+    margin: 3px 3px 3px 3px;
+    border-color: none;
+}
+.sendButton{
+    background-color: #BC6C25;
+    color: #FEFAE0;
+    font-weight: 600;
+    font-family: "Cabin";
+}
+.backBtn{
+    background-color: #FEFAE0;
+    color: #283618;
+    font-family: "Cabin";
+    font-weight: 600;
+    border-radius: 10px;
+    margin: 10px 0 15px 0;
+    padding: 7px;
+    border: none;
+}
