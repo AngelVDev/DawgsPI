@@ -1,0 +1,38 @@
+.landingBg{
+    /*pic from freepik*/
+    background-size: cover;
+    background:url("\lovely-dog-posing-garden.jpg") center center/cover no-repeat;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: center;
+    justify-content: center;
+}
+.landingTextDiv{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: center;
+    justify-content: center;
+    font-family: "Cabin";
+    margin-left: 5vw;
+}
+.landingTextDiv>*{
+    margin-left: 2vw;
+    color: whitesmoke;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 0px 0px 2px rgba(0, 49, 34, 0.699);
+    
+}
+.landingBtn{
+    background-color: #DDA15E;
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-left: 5vw;
+    border-color: #DDA15E;
+    
+}
