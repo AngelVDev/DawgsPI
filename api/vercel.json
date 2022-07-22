@@ -8,9 +8,9 @@
   ],
   "routes": [
     {
-      "src": "/**/*",
+      "src": "api/**/*",
 
-      "dest": "index.js"
+      "dest": "https://dawgs-api.vercel.app/"
     }
   ]
 }
