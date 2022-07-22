@@ -1,7 +1,7 @@
 .landingBg{
     /*pic from freepik*/
     background-size: cover;
-    background:url("\lovely-dog-posing-garden.jpg") center center/cover no-repeat;
+    background:url("\lovely-dog-posing-garden.avif") center center/cover no-repeat;
     height: 100%;
     display: flex;
     flex-direction: column;
