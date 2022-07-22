@@ -124,6 +124,22 @@ function rootReducer(state = initialState, action) {
         ...state,
         chocoDetail: [],
       };
+    case "SORT_LIFESPAN":
+      const copeeSpan = [...state.dogs];
+      console.log(action.payload);
+      const filterSpan =
+        action.payload === "lifeSpan"
+          ? copeeSpan.filter(
+              (doggs) =>
+                doggs?.lifespan.split(" - ")[0] <= "4" &&
+                doggs?.lifespan.split(" - ")[1] <= "12"
+            )
+          : copeeSpan;
+      console.log(state.allDogs);
+      return {
+        ...state,
+        allDogs: filterSpan,
+      };
     default:
       return {
         ...state,

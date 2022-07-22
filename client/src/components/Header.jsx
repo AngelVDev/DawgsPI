@@ -9,6 +9,7 @@ import {
   orderByName,
   orderByWeight,
   showCreated,
+  orderBySpan,
 } from "../redux/actions";
 
 const Header = ({ setCurrentPage }) => {
@@ -40,6 +41,11 @@ const Header = ({ setCurrentPage }) => {
     setCurrentPage(1);
     dispatch(getDogs());
   };
+  const handleSpan = (e) => {
+    e.preventDefault();
+    setCurrentPage(1);
+    dispatch(orderBySpan(e.target.value));
+  };
   useEffect(() => {
     dispatch(getTemps());
     dispatch(getDogs());
@@ -63,6 +69,13 @@ const Header = ({ setCurrentPage }) => {
           <option value="">-</option>
           <option value="ASC">A to Z</option>
           <option value="DSC">Z to A</option>
+        </select>
+      </label>
+      <label className="headerLabel">
+        Sort by span
+        <select className="headerSelect" onChange={(e) => handleSpan(e)}>
+          <option value="">-</option>
+          <option value="lifeSpan">ON</option>
         </select>
       </label>
       <label className="headerLabel">

@@ -64,6 +64,20 @@ export function orderByName(payload) {
     }
   };
 }
+
+export function orderBySpan(payload) {
+  return async (dispatch) => {
+    try {
+      dispatch({
+        type: "SORT_LIFESPAN",
+        payload,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
 export function showCreated(payload) {
   return async (dispatch) => {
     try {
