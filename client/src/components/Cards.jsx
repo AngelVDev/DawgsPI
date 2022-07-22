@@ -39,6 +39,7 @@ const Cards = ({ currentDogs }) => {
                     </span>
                   ))}
             </p>
+            <p>Lifespan: {d.lifespan}</p>
             <h2>
               ✨: {d.id !== 179 && d.id !== 232 ? d.weight : "3 - 25"} Kgs.
             </h2>
