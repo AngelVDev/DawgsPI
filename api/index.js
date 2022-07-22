@@ -27,3 +27,4 @@ conn.sync({ force: false }).then(() => {
     console.log("%s barking at 3001"); // eslint-disable-line no-console
   });
 });
+module.exports = server;
