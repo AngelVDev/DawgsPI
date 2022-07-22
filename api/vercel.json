@@ -2,15 +2,15 @@
   "version": 2,
   "builds": [
     {
-      "src": "index.js",
+      "src": "app.js",
       "use": "@now/node"
     }
   ],
   "routes": [
     {
-      "src": "api/**/*",
+      "src": "src/**/*",
 
-      "dest": "https://dawgs-api.vercel.app/"
+      "dest": "src/app.js"
     }
   ]
 }
