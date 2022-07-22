@@ -179,7 +179,6 @@ const Creator = () => {
           </label>
           <button
             className="sendButton"
-            onClick={handleClick}
             disabled={Object.keys(error).length}
             type="submit"
           >
