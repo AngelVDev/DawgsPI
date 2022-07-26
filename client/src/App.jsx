@@ -3,6 +3,11 @@ import Details from "./pages/Details";
 import Home from "./pages/Home";
 import Landing from "./pages/Landing";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
+
+axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001";
 
 function App() {
   return (
